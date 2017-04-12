@@ -1,0 +1,73 @@
+@font-face {
+    font-family: Digital;
+    src: url(../fonts/digital-7.ttf);
+}
+body{
+	text-align: center;
+	font-family: Digital;
+}
+.container{
+	width: 232px;
+	margin: auto;
+	background: black;
+	text-align: center;
+	border: 1px solid black;
+	padding: 1px;
+}
+#scoreContainer{
+	color: white;
+	font-weight: bold;
+	padding: 10px;
+	font-family: Digital;
+	font-size: large;
+}
+.tile{
+	float: left;
+	background: linear-gradient(lightblue, navajowhite);
+	width: 50px;
+	height: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 2px;
+	cursor: pointer;
+	border-radius: 2px;
+	border: 2px solid transparent;
+	text-align: center;
+}
+
+.tile:hover{
+	background: linear-gradient(navajowhite, lightblue);
+}
+
+.svgIcon{
+	width: 40px;
+	height: 40px;
+}
+
+.unturned img{
+	display: none;
+}
+
+.turned img{
+	display: block;
+}
+
+#completed{
+	background: lightblue;
+	width: 300px;
+	margin: auto;
+	padding: 10px;
+	border-radius: 5px;
+	border: 2px solid white;
+	box-shadow: 0 0 5px black;
+}
+
+.example-appear{
+   opacity: 0.01;
+}
+
+.example-appear.example-appear-active{
+   opacity: 1;
+   transition: opacity 500ms ease-in;
+}
