@@ -7,9 +7,9 @@
  
  Rules
  =====
- +20 for every correct card turned
- -5 for every card turned incorrectly
- 60 seconds to complete the game
+ 1. +20 for every correct card turned
+ 2. -5 for every card turned incorrectly
+ 3. 60 seconds to complete the game
  
  Additional Information
  ======================
