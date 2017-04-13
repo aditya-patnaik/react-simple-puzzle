@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import ScoreContainer from './ScoreContainer';
+import classNames from 'classnames';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 class MainContainer extends Component {
@@ -43,6 +44,9 @@ class MainContainer extends Component {
 			this.setState({completion: true});
 		}
 	}
+	animateImg(){
+		console.log('in here');
+	}
 	turnTile(evt){
 		if(this.state.turned!=null){
 			if( this.state.mapping[this.state.turned] === this.state.mapping[evt]){
@@ -67,8 +71,13 @@ class MainContainer extends Component {
 		for(var i=0; i<gridSize; i++){
 			for(var j=0; j<gridSize; j++){
 				if(turnedCorrectly.includes(counter) || counter===turned || counter===buffer){
+					var tileClasses = classNames({
+					  'tile': true,
+					  'animated': true,
+					  'flipInY': true
+					});
 					output.push(
-						<div className='tile' style={{background: 'white'}}><img src={images[counter]} key={counter} className='svgIcon'/></div>
+						<div className={tileClasses} style={{background: 'white'}}><img src={images[counter]} key={counter} className='svgIcon' onLoad={this.animateImg}/></div>
 					);
 				} else{
 					output.push(

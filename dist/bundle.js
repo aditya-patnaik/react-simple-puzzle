@@ -21655,7 +21655,11 @@
 
 	var _ScoreContainer2 = _interopRequireDefault(_ScoreContainer);
 
-	var _reactAddonsCssTransitionGroup = __webpack_require__(182);
+	var _classnames = __webpack_require__(182);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	var _reactAddonsCssTransitionGroup = __webpack_require__(183);
 
 	var _reactAddonsCssTransitionGroup2 = _interopRequireDefault(_reactAddonsCssTransitionGroup);
 
@@ -21723,6 +21727,11 @@
 				}
 			}
 		}, {
+			key: 'animateImg',
+			value: function animateImg() {
+				console.log('in here');
+			}
+		}, {
 			key: 'turnTile',
 			value: function turnTile(evt) {
 				if (this.state.turned != null) {
@@ -21750,10 +21759,15 @@
 				for (var i = 0; i < gridSize; i++) {
 					for (var j = 0; j < gridSize; j++) {
 						if (turnedCorrectly.includes(counter) || counter === turned || counter === buffer) {
+							var tileClasses = (0, _classnames2.default)({
+								'tile': true,
+								'animated': true,
+								'flipInY': true
+							});
 							output.push(_react2.default.createElement(
 								'div',
-								{ className: 'tile', style: { background: 'white' } },
-								_react2.default.createElement('img', { src: images[counter], key: counter, className: 'svgIcon' })
+								{ className: tileClasses, style: { background: 'white' } },
+								_react2.default.createElement('img', { src: images[counter], key: counter, className: 'svgIcon', onLoad: this.animateImg })
 							));
 						} else {
 							output.push(_react2.default.createElement(
@@ -22096,10 +22110,64 @@
 /* 182 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(183);
+	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+	  Copyright (c) 2016 Jed Watson.
+	  Licensed under the MIT License (MIT), see
+	  http://jedwatson.github.io/classnames
+	*/
+	/* global define */
+
+	(function () {
+		'use strict';
+
+		var hasOwn = {}.hasOwnProperty;
+
+		function classNames () {
+			var classes = [];
+
+			for (var i = 0; i < arguments.length; i++) {
+				var arg = arguments[i];
+				if (!arg) continue;
+
+				var argType = typeof arg;
+
+				if (argType === 'string' || argType === 'number') {
+					classes.push(arg);
+				} else if (Array.isArray(arg)) {
+					classes.push(classNames.apply(null, arg));
+				} else if (argType === 'object') {
+					for (var key in arg) {
+						if (hasOwn.call(arg, key) && arg[key]) {
+							classes.push(key);
+						}
+					}
+				}
+			}
+
+			return classes.join(' ');
+		}
+
+		if (typeof module !== 'undefined' && module.exports) {
+			module.exports = classNames;
+		} else if (true) {
+			// register as 'classnames', consistent with npm package name
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () {
+				return classNames;
+			}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+		} else {
+			window.classNames = classNames;
+		}
+	}());
+
 
 /***/ },
 /* 183 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__(184);
+
+/***/ },
+/* 184 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -22124,8 +22192,8 @@
 
 	var React = __webpack_require__(2);
 
-	var ReactTransitionGroup = __webpack_require__(184);
-	var ReactCSSTransitionGroupChild = __webpack_require__(187);
+	var ReactTransitionGroup = __webpack_require__(185);
+	var ReactCSSTransitionGroupChild = __webpack_require__(188);
 
 	function createTransitionTimeoutPropValidator(transitionType) {
 	  var timeoutPropName = 'transition' + transitionType + 'Timeout';
@@ -22208,7 +22276,7 @@
 	module.exports = ReactCSSTransitionGroup;
 
 /***/ },
-/* 184 */
+/* 185 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -22232,7 +22300,7 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var React = __webpack_require__(2);
-	var ReactTransitionChildMapping = __webpack_require__(185);
+	var ReactTransitionChildMapping = __webpack_require__(186);
 
 	var emptyFunction = __webpack_require__(12);
 
@@ -22441,7 +22509,7 @@
 	module.exports = ReactTransitionGroup;
 
 /***/ },
-/* 185 */
+/* 186 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -22456,7 +22524,7 @@
 
 	'use strict';
 
-	var flattenChildren = __webpack_require__(186);
+	var flattenChildren = __webpack_require__(187);
 
 	var ReactTransitionChildMapping = {
 	  /**
@@ -22549,7 +22617,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 186 */
+/* 187 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -22630,7 +22698,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 187 */
+/* 188 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -22646,10 +22714,10 @@
 	'use strict';
 
 	var React = __webpack_require__(2);
-	var ReactAddonsDOMDependencies = __webpack_require__(188);
+	var ReactAddonsDOMDependencies = __webpack_require__(189);
 
-	var CSSCore = __webpack_require__(193);
-	var ReactTransitionEvents = __webpack_require__(194);
+	var CSSCore = __webpack_require__(194);
+	var ReactTransitionEvents = __webpack_require__(195);
 
 	var onlyChild = __webpack_require__(31);
 
@@ -22801,7 +22869,7 @@
 	module.exports = ReactCSSTransitionGroupChild;
 
 /***/ },
-/* 188 */
+/* 189 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -22828,14 +22896,14 @@
 
 	  exports.getReactPerf = function () {
 	    if (!ReactPerf) {
-	      ReactPerf = __webpack_require__(189);
+	      ReactPerf = __webpack_require__(190);
 	    }
 	    return ReactPerf;
 	  };
 
 	  exports.getReactTestUtils = function () {
 	    if (!ReactTestUtils) {
-	      ReactTestUtils = __webpack_require__(190);
+	      ReactTestUtils = __webpack_require__(191);
 	    }
 	    return ReactTestUtils;
 	  };
@@ -22843,7 +22911,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 189 */
+/* 190 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -23349,7 +23417,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 190 */
+/* 191 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -23367,7 +23435,7 @@
 	var _prodInvariant = __webpack_require__(35),
 	    _assign = __webpack_require__(50);
 
-	var EventConstants = __webpack_require__(191);
+	var EventConstants = __webpack_require__(192);
 	var EventPluginHub = __webpack_require__(42);
 	var EventPluginRegistry = __webpack_require__(43);
 	var EventPropagators = __webpack_require__(41);
@@ -23378,7 +23446,7 @@
 	var ReactInstanceMap = __webpack_require__(117);
 	var ReactUpdates = __webpack_require__(57);
 	var SyntheticEvent = __webpack_require__(54);
-	var ReactShallowRenderer = __webpack_require__(192);
+	var ReactShallowRenderer = __webpack_require__(193);
 
 	var findDOMNode = __webpack_require__(173);
 	var invariant = __webpack_require__(8);
@@ -23766,7 +23834,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 191 */
+/* 192 */
 /***/ function(module, exports) {
 
 	/**
@@ -23862,7 +23930,7 @@
 	module.exports = EventConstants;
 
 /***/ },
-/* 192 */
+/* 193 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -24002,7 +24070,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 193 */
+/* 194 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -24129,7 +24197,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 194 */
+/* 195 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
