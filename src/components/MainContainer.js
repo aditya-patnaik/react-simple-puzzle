@@ -6,8 +6,10 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 class MainContainer extends Component {
 	constructor() {
 		super();
+		this.finishGame = this.finishGame.bind(this);
 		this.state = {
 			completion: false,
+			finishMessage: 'You\'ve completed the game successfully !',
 			score: null,
 			mapping: [],
 			output: '',
@@ -15,6 +17,9 @@ class MainContainer extends Component {
 			turned: null,
 			buffer: null
 		};
+	}
+	finishGame(){
+		this.setState({ completion: true, finishMessage: 'Oops! Time\'s up.' });
 	}
 	componentWillMount(){
 		this.showAnswer();
@@ -147,7 +152,7 @@ class MainContainer extends Component {
 		if(!this.state.completion){
 			return (
 				<div className='container'>
-					<ScoreContainer score={this.state.score} />
+					<ScoreContainer score={this.state.score} finishGame={this.finishGame}/>
 					<div className='row'>
 					<ReactCSSTransitionGroup transitionName = "example" 
 					transitionAppear = {true} transitionAppearTimeout = {500} 
@@ -161,8 +166,9 @@ class MainContainer extends Component {
 			return(
 				<div style={{ textAlign: 'center' }}>
 					<div id='completed'>
-					<h3>You've completed the game successfully !</h3>
+					<h3>{this.state.finishMessage}</h3>
 					<h2>Your score : {this.state.score}</h2>
+					<div>Reload the page to start again</div>
 					</div>
 				</div>
 			);
