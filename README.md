@@ -4,7 +4,9 @@
  ========================
  1. Download the project
  2. Open index.html in the root directory with any browser
-     OR
+    ------------------------------------------------------
+    OR
+    ------------------------------------------------------
  Visit https://aditya-patnaik.github.io/react-simple-puzzle/
  
  Rules
